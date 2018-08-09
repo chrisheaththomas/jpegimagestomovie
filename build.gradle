@@ -1,0 +1,21 @@
+plugins {
+    id 'java-library'
+}
+
+//apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'javax.media:jmf:2.1.1e'
+}
+
+jar {
+    manifest {
+        attributes('Implementation-Title': project.name,
+                'Implementation-Version': project.version)
+    }
+}
+
