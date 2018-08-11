@@ -35,7 +35,7 @@ import javax.media.protocol.PullBufferStream;
 /** This program takes a list of JPEG image files and convert them into a QuickTime movie. */
 public class JpegImagesToMovie implements ControllerListener, DataSinkListener {
 
-  private boolean doIt(
+  public boolean doIt(
       int width, int height, int frameRate, List<byte[]> frames, MediaLocator outML) {
     ImageDataSource ids = new ImageDataSource(width, height, frameRate, new Vector<>(frames));
 
@@ -216,9 +216,7 @@ public class JpegImagesToMovie implements ControllerListener, DataSinkListener {
   }
 
   /** Create a media locator from the given string. */
-  private static MediaLocator createMediaLocator(String url) {
-
-    MediaLocator ml;
+  public static MediaLocator createMediaLocator(String url) {
 
     if (url.indexOf(":") > 0) return new MediaLocator(url);
 
@@ -349,8 +347,6 @@ public class JpegImagesToMovie implements ControllerListener, DataSinkListener {
         data = new byte[image.length];
         buf.setData(data);
       }
-
-      System.err.println(" - reading image of length: " + image.length);
 
       System.arraycopy(image, 0, data, 0, image.length);
 
